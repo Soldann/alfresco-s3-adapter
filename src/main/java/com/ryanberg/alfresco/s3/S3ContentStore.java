@@ -2,6 +2,7 @@ package com.ryanberg.alfresco.s3;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.client.builder.AwsClientBuilder;
@@ -88,10 +89,10 @@ public class S3ContentStore extends AbstractContentStore
 
         s3Client = AmazonS3ClientBuilder
                       .standard()
-                      .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://minio-service:9000",this.regionName)
+                      .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://minio-service:9000",this.regionName))
                      .withPathStyleAccessEnabled(true)
                      .withClientConfiguration(clientConfiguration)
-                     .withCredentials(credentials)
+                     .withCredentials(new AWSStaticCredentialsProvider(credentials))
                      .build(); 
         transferManager = new TransferManager(s3Client);
     }
