@@ -79,7 +79,7 @@
         	<property name="scheduler" ref="schedulerFactory"/>
         	<property name="triggers">
             		<list>
-				<bean id="cachingContentStoreCleanerTrigger" class="org.alfresco.util.CronTriggerBean">
+				<bean id="cachingContentStoreCleanerTrigger" class="org.alfresco.util.CronTriggerFactoryBean">
                 			<property name="jobDetail">
                         		<ref bean="cachingContentStoreCleanerJobDetail" />
                 			</property>
