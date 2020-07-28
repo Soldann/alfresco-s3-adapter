@@ -1,5 +1,7 @@
 # alfresco-s3-adapter
-Alfresco AMP Module for S3 Backed Storage
+### Alfresco AMP Module for S3 Backed Storage
+
+This module enables Alfresco to use the S3 storage as configured in `alfresco-global.properties` as the content store.
 
  * Migrated from the `alfresco-cloud-store` project at https://code.google.com/p/alfresco-cloud-store/
  * Updated to use AWS S3 SDK 1.11.106, Alfresco 6.2.0-ga API
@@ -42,4 +44,3 @@ dir.contentstore.deleted=/alfresco/contentstore.deleted
 ```
  
  * Alternatively, edit the `alfresco-global.properties` file located in src/main/amp/config/alfresco/module/alfresco-s3/
-
