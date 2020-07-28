@@ -34,6 +34,7 @@
 		<property name="bucketName" value="${aws.s3.bucketName}"/>
 		<property name="regionName" value="${aws.regionName}"/>
 		<property name="rootDirectory" value="${dir.contentstore.deleted}"/>
+                <property name="url" value="${aws.s3.url}"/>
 	</bean>
 
 	<bean id="contentCache" class="org.alfresco.repo.content.caching.ContentCacheImpl">
@@ -97,6 +98,7 @@
 		<property name="bucketName" value="${aws.s3.bucketName}"/>
 		<property name="regionName" value="${aws.regionName}"/>
 		<property name="rootDirectory" value="${dir.contentstore}"/>
+                <property name="url" value="${aws.s3.url}"/>
 	</bean>
 
 </beans>

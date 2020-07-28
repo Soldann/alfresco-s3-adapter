@@ -24,7 +24,8 @@
         <!-- The following are default values for data location and Alfresco Community version.
              Uncomment if you need to change (Note. current default version for Enterprise edition is 5.0.1)
           <alfresco.data.location>alf_data_dev</alfresco.data.location> -->
-          <alfresco.version>6.2.0-ga</alfresco.version>
+
+        <alfresco.version>6.2.0-ga</alfresco.version>
 
         <!-- This control the root logging level for all apps uncomment and change, defaults to WARN
             <app.log.root.level>WARN</app.log.root.level>

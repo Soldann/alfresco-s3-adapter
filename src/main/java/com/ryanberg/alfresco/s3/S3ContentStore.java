@@ -52,6 +52,7 @@ public class S3ContentStore extends AbstractContentStore
     private String bucketName;
     private String regionName;
     private String rootDirectory;
+    private String url;
 
     @Override
     public boolean isWriteSupported() {
@@ -84,12 +85,18 @@ public class S3ContentStore extends AbstractContentStore
             }
         }
 
+        if(StringUtils.isNotBlank(this.url)){
+            logger.debug("Found endpoint URL in properties file");
+        } else {
+            logger.error("No endpoint found, cannot initalize S3 client");
+        }
+
         ClientConfiguration clientConfiguration = new ClientConfiguration();
         clientConfiguration.setSignerOverride("AWSS3V4SignerType"); 
 
         s3Client = AmazonS3ClientBuilder
                       .standard()
-                      .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://minio-service:9000",this.regionName))
+                      .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(this.url,this.regionName))
                      .withPathStyleAccessEnabled(true)
                      .withClientConfiguration(clientConfiguration)
                      .withCredentials(new AWSStaticCredentialsProvider(credentials))
@@ -122,6 +129,10 @@ public class S3ContentStore extends AbstractContentStore
         }
 
         this.rootDirectory = dir;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
